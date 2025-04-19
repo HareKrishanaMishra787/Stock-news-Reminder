@@ -1,48 +1,93 @@
-## 📈 Stock Price Alert System
-An automated Python application that monitors stock price movements and sends SMS notifications with relevant news articles when significant changes occur.
-## 🌟 Features
+# 📈 Stock Alert System 🚨
 
-Stock Price Monitoring: Tracks daily closing prices of specified stocks
-Percentage Change Calculation: Calculates day-to-day price movements
-Threshold Alerts: Triggers notifications when price changes exceed defined thresholds
-Automated News Collection: Fetches recent news articles related to the company
-SMS Notifications: Delivers alerts with stock movement data and relevant news via SMS
+A Python-based alerting system that monitors **any company's stock** and sends real-time SMS alerts with relevant news when significant price fluctuations occur.
 
-## 🛠️ Technology Stack
+---
 
-Python 3.6+
-Alpha Vantage API (stock market data)
-News API (company news articles)
-Twilio API (SMS messaging)
+## 🧠 Features
 
-API Keys and Credentials
-The application requires the following API keys and credentials:
+- ✅ Monitors **any stock** using [Alpha Vantage](https://www.alphavantage.co/)
+- ✅ Calculates daily price changes and percentage difference
+- ✅ Gets the **top 3 relevant news articles** using [NewsAPI](https://newsapi.org/)
+- ✅ Sends SMS alerts via [Twilio](https://www.twilio.com/) if the change exceeds a defined threshold
 
-STOCK_API_KEY: Your Alpha Vantage API key
-NEWS_API_KEY: Your News API key
-TWILIO_SID: Your Twilio account SID
-TWILIO_AUTH_TOKEN: Your Twilio authentication token
+---
 
-## 🔍 How It Works
+## ⚙️ Tech Stack
 
-Stock Price Monitoring:
+- **Python 3**
+- `requests` – For API calls
+- `twilio` – For sending SMS messages
 
-Fetches the closing stock prices for yesterday and the day before
-Calculates the percentage difference between these prices
+---
 
+## 🚀 Getting Started
 
-Alert System:
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/stock-alert-system.git
+cd stock-alert-system
+```
 
-If the percentage change exceeds the threshold (default 2%) 
+### 2. Install Dependencies
+```bash
+pip install requests twilio
+```
 
-Fetches the 3 most recent news articles about the company
-Formats the data with appropriate rise/fall indicators (🔺/🔻)
+### 3. Configuration
 
+Open `main.py` and update the following variables:
 
-Notification Delivery:
-<br>
-<img src="https://github.com/user-attachments/assets/26fa0a58-197c-4661-8e2e-c8251d44679d" height="400" width="200" />
+```python
+STOCK_NAME = "TSLA"           # Ticker symbol of the stock
+COMPANY_NAME = "Tesla Inc"    # Name of the company
+STOCK_API_KEY = "your_alpha_vantage_api_key"
+NEWS_API_KEY = "your_news_api_key"
+TWILIO_SID = "your_twilio_sid"
+TWILIO_AUTH_TOKEN = "your_twilio_auth_token"
+TWILIO_PHONE_NUMBER = "+1234567890"
+USER_PHONE_NUMBER = "+919999999999"
+```
 
+You can change `PRICE_CHANGE_THRESHOLD` to adjust sensitivity:
+```python
+PRICE_CHANGE_THRESHOLD = 2  # percent
+```
 
-Sends individual SMS messages for each news article
-Each message includes the stock symbol, percentage change, headline, and brief description
+### 4. Run the Script
+```bash
+python main.py
+```
+
+---
+
+## 📱 Sample Alert
+
+```
+AAPL: 🔺2.56%
+Headline: Apple beats expectations with strong iPhone sales.
+Brief: Apple reported better-than-expected quarterly results, pushing shares higher.
+```
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── main.py           # Main script
+├── README.md         # Project documentation
+├── .gitignore        # Standard Git ignore file
+```
+
+---
+
+## 🛡️ Disclaimer
+
+This project is intended for educational and demo purposes only. Use responsibly. Never share your API keys publicly.
+
+---
+
+## ⭐ Show Some Love
+
+If you found this project helpful, consider giving it a ⭐ on GitHub and sharing it with others!
